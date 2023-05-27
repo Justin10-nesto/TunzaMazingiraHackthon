@@ -1,0 +1,85 @@
+{% load static %} {% include "includes/header.html" %}
+<div class="card">
+    <div class="card-body">
+
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title text-center">List of Schedules</h3>
+                </div>
+            </div>
+            <div class="col-auto text-right float-right ml-auto">
+                <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+                <a href="{% url 'addSchedule' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover table-center mb-0 datatable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Place</th>
+                            <th>Date</th>
+                            <th>Message</th>
+                            <th class="text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dep in schedules %}
+                        <tr>
+                            <td>{{dep.id}}</td>
+                            <td>
+                                <h2>
+                                    <a>{{dep.place.name}}</a>
+                                </h2>
+                            </td>
+                            <td>{{dep.date_used}}</td>
+                            <td>{{dep.message}}
+                            </td>
+                            <td class="text-right">
+
+                                <div class="actions">
+
+                                    <a class="btn btn-sm bg-success-light mr-2" data-toggle="modal" data-target="#modal-default_delete_{{dep.id}}" href="#edit_personal_details">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="modal-default_delete_{{dep.id}}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Delete Info</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <h3>Scheduled task to be done on
+                                                <b>{{dep.place.name}}</b> at {{dep.date_used}}
+                                            </h3>
+                                            <a href="{% url 'deleteSchedule' dep.id %}" class="btn btn-sm bg-danger-light text-right">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    </td>
+                                    </tr>
+                                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% load static %} {% include "includes/footer.html" %}

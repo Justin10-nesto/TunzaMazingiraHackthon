@@ -1,0 +1,22 @@
+{% load static %} {% include 'includes/adminlite-footer.html' %}
+
+<script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'assets/js/script.js' %}"></script>
+<script>
+    var startTime = performance.now();
+
+    function calculateElapsedTime() {
+        var endTime = performance.now();
+        var ElapsedTime = endTime - startTime;
+        var ElapsedTimeInSec = ElapsedTime / 1000;
+        console.log('ellapsed time is: ', ElapsedTimeInSec);
+    }
+    window.addEventListener('beforeunload', calculateElapsedTime)
+</script>
+</body>
+
+</html>

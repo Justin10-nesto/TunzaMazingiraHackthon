@@ -1,0 +1,47 @@
+{% load static %} {% include "includes/header.html" %}
+
+<div class="card">
+    <div class="card-body">
+        <div class="col">
+
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="form-title"><span>Add Event</span></h5>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Event description</label>
+                                <input type="text" name="description" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" name="Date" value="" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Place Name</label>
+                                <select name="name" class="form-control"> {% for pl in place %}
+                                <option value="{{pl.id}}">{{pl.name}}</option>
+                                {% endfor %}
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% include "includes/footer.html" %}
